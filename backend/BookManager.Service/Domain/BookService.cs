@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BookManager.Domain.Interfaces.Repository;
 using BookManager.Domain.Interfaces.Service;
 using BookManager.Domain.Models;
@@ -13,11 +14,6 @@ namespace BookManager.Service.Domain {
 
         public virtual Book Add (Book t) {
             _repository.Insert (t);
-            foreach (var item in t.BookGenres)
-            {
-                item.BookId = t.Id;
-            }
-            _repository.Update(t);
             return t;
         }
 
@@ -26,7 +22,28 @@ namespace BookManager.Service.Domain {
         }
 
         public IEnumerable<Book> GetAll () {
-            return _repository.FindAll ();
+            var list = _repository.FindAll ();
+            return list;
+        }
+
+        public IEnumerable<Book> Search (string title = "", int authorId = 0) {
+            var list = Enumerable.Empty<Book> ();
+
+            if (authorId > 0 && title != "" && title != null) {
+                list = _repository.Find (book => book.AuthorId == authorId && book.Title.Contains (title));
+                return list;
+            }
+
+            if (authorId > 0) {
+                list = _repository.Find (book => book.AuthorId == authorId);
+                return list;
+            }
+
+            if (title != "") {
+                list = _repository.Find (book => book.Title.Contains (title));
+            }
+
+            return list;
         }
 
         public Book GetById (int id) {

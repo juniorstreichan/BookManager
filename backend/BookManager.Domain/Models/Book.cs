@@ -11,13 +11,16 @@ namespace BookManager.Domain.Models {
         public string Synopsis { get; set; }
         public string ImageUrl { get; set; }
         public string BuyLink { get; set; }
+
+
         public int AuthorId { get; set; }
         public Author Author { get; set; }
 
         public int PublishingCompanyId { get; set; }
         public PublishingCompany PublishingCompany { get; set; }
 
-        public IEnumerable<BookGenre> BookGenres { get; set; }
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
 
     }
 }

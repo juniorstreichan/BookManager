@@ -13,15 +13,26 @@ namespace BookManager.WebAPI.Controllers {
             _service = service;
         }
 
-        [HttpDelete]
+        [HttpDelete ("{id}")]
         public ActionResult Delete (int id) {
-            _service.Remove(id);
-            return Ok();
+            _service.Remove (id);
+            return Ok ();
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Book>> GetAll () {
             var list = _service.GetAll ();
+            return Ok (list);
+        }
+
+        [HttpGet ("q")]
+        public ActionResult<IEnumerable<Book>> Search (
+            [FromQuery] string title = "", [FromQuery] int author = 0
+        ) {
+            var list = _service.Search (
+                title,
+                author
+            );
             return Ok (list);
         }
 

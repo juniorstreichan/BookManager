@@ -64,6 +64,8 @@ namespace BookManager.WebAPI.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("GenreId");
+
                     b.Property<string>("ImageUrl");
 
                     b.Property<int>("Pages");
@@ -80,22 +82,11 @@ namespace BookManager.WebAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("GenreId");
+
                     b.HasIndex("PublishingCompanyId");
 
                     b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("BookManager.Domain.Models.BookGenre", b =>
-                {
-                    b.Property<int>("BookId");
-
-                    b.Property<int>("GenreId");
-
-                    b.HasKey("BookId", "GenreId");
-
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("BookGenre");
                 });
 
             modelBuilder.Entity("BookManager.Domain.Models.Genre", b =>
@@ -173,22 +164,14 @@ namespace BookManager.WebAPI.Migrations
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookManager.Domain.Models.PublishingCompany", "PublishingCompany")
-                        .WithMany()
-                        .HasForeignKey("PublishingCompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookManager.Domain.Models.BookGenre", b =>
-                {
-                    b.HasOne("BookManager.Domain.Models.Book", "Book")
-                        .WithMany("BookGenres")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BookManager.Domain.Models.Genre", "Genre")
                         .WithMany()
                         .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookManager.Domain.Models.PublishingCompany", "PublishingCompany")
+                        .WithMany()
+                        .HasForeignKey("PublishingCompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

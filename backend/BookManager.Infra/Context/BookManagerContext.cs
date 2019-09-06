@@ -11,8 +11,8 @@ namespace BookManager.Infra.Context {
         public BookManagerContext (DbContextOptions<BookManagerContext> options) : base (options) { }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
-            modelBuilder.Entity<BookGenre> ()
-                .HasKey (bg => new { bg.BookId, bg.GenreId });
+            modelBuilder.Entity<Book> ()
+                .HasOne(b => b.Genre);
 
             modelBuilder.Entity<Book> ()
                 .HasOne (b => b.Author);

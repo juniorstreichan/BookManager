@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookManager.WebAPI.Migrations
 {
     [DbContext(typeof(BookManagerContext))]
-    [Migration("20190906095847_Initial")]
+    [Migration("20190906160418_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,28 @@ namespace BookManager.WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Matheus"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Marcos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Lucas"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "João"
+                        });
                 });
 
             modelBuilder.Entity("BookManager.Domain.Models.Book", b =>
@@ -43,6 +65,8 @@ namespace BookManager.WebAPI.Migrations
                     b.Property<string>("BuyLink");
 
                     b.Property<string>("Description");
+
+                    b.Property<int>("GenreId");
 
                     b.Property<string>("ImageUrl");
 
@@ -60,22 +84,11 @@ namespace BookManager.WebAPI.Migrations
 
                     b.HasIndex("AuthorId");
 
+                    b.HasIndex("GenreId");
+
                     b.HasIndex("PublishingCompanyId");
 
                     b.ToTable("Books");
-                });
-
-            modelBuilder.Entity("BookManager.Domain.Models.BookGenre", b =>
-                {
-                    b.Property<int>("BookId");
-
-                    b.Property<int>("GenreId");
-
-                    b.HasKey("BookId", "GenreId");
-
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("BookGenre");
                 });
 
             modelBuilder.Entity("BookManager.Domain.Models.Genre", b =>
@@ -88,6 +101,28 @@ namespace BookManager.WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Épico"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Fábula"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Epopeia"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "Novela"
+                        });
                 });
 
             modelBuilder.Entity("BookManager.Domain.Models.PublishingCompany", b =>
@@ -100,6 +135,28 @@ namespace BookManager.WebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PublishingCompanies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Simon & Schuster	EUA"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Egmont group	Dinamarca / Noruega "
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Woongjin ThinkBig	Coréia do Sul"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "RCS Libri	Itália	513	6063"
+                        });
                 });
 
             modelBuilder.Entity("BookManager.Domain.Models.Book", b =>
@@ -109,22 +166,14 @@ namespace BookManager.WebAPI.Migrations
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BookManager.Domain.Models.PublishingCompany", "PublishingCompany")
-                        .WithMany()
-                        .HasForeignKey("PublishingCompanyId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BookManager.Domain.Models.BookGenre", b =>
-                {
-                    b.HasOne("BookManager.Domain.Models.Book", "Book")
-                        .WithMany("BookGenres")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("BookManager.Domain.Models.Genre", "Genre")
                         .WithMany()
                         .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BookManager.Domain.Models.PublishingCompany", "PublishingCompany")
+                        .WithMany()
+                        .HasForeignKey("PublishingCompanyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -23,6 +23,7 @@ namespace BookManager.Infra.Repository {
         public void Delete (int id) {
             var entity = ById (id);
             _db.Remove (entity);
+            _context.SaveChanges ();
         }
 
         public IQueryable<T> Find (Expression<Func<T, bool>> expression) {
@@ -35,14 +36,13 @@ namespace BookManager.Infra.Repository {
 
         public T Insert (T entity) {
             _db.Add (entity);
-            // _context.SaveChanges ();
-
+            _context.SaveChanges ();
             return entity;
         }
 
         public T Update (T entity) {
             _db.Update (entity);
-
+            _context.SaveChanges ();
             return entity;
         }
     }

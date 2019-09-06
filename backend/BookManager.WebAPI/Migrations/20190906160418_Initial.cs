@@ -61,7 +61,8 @@ namespace BookManager.WebAPI.Migrations
                     ImageUrl = table.Column<string>(nullable: true),
                     BuyLink = table.Column<string>(nullable: true),
                     AuthorId = table.Column<int>(nullable: false),
-                    PublishingCompanyId = table.Column<int>(nullable: false)
+                    PublishingCompanyId = table.Column<int>(nullable: false),
+                    GenreId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,6 +74,12 @@ namespace BookManager.WebAPI.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Books_Genres_GenreId",
+                        column: x => x.GenreId,
+                        principalTable: "Genres",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Books_PublishingCompanies_PublishingCompanyId",
                         column: x => x.PublishingCompanyId,
                         principalTable: "PublishingCompanies",
@@ -80,39 +87,48 @@ namespace BookManager.WebAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "BookGenre",
-                columns: table => new
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
                 {
-                    BookId = table.Column<int>(nullable: false),
-                    GenreId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BookGenre", x => new { x.BookId, x.GenreId });
-                    table.ForeignKey(
-                        name: "FK_BookGenre_Books_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Books",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BookGenre_Genres_GenreId",
-                        column: x => x.GenreId,
-                        principalTable: "Genres",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    { 1, "Matheus" },
+                    { 2, "Marcos" },
+                    { 3, "Lucas" },
+                    { 4, "João" }
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_BookGenre_GenreId",
-                table: "BookGenre",
-                column: "GenreId");
+            migrationBuilder.InsertData(
+                table: "Genres",
+                columns: new[] { "Id", "Description" },
+                values: new object[,]
+                {
+                    { 1, "Épico" },
+                    { 2, "Fábula" },
+                    { 3, "Epopeia" },
+                    { 4, "Novela" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PublishingCompanies",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Simon & Schuster	EUA" },
+                    { 2, "Egmont group	Dinamarca / Noruega " },
+                    { 3, "Woongjin ThinkBig	Coréia do Sul" },
+                    { 4, "RCS Libri	Itália	513	6063" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_AuthorId",
                 table: "Books",
                 column: "AuthorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_GenreId",
+                table: "Books",
+                column: "GenreId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_PublishingCompanyId",
@@ -123,16 +139,13 @@ namespace BookManager.WebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookGenre");
-
-            migrationBuilder.DropTable(
                 name: "Books");
 
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "Authors");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "Genres");
 
             migrationBuilder.DropTable(
                 name: "PublishingCompanies");
