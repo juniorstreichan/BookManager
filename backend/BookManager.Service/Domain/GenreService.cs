@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using BookManager.Domain.Interfaces.Repository;
+using BookManager.Domain.Interfaces.Service;
 using BookManager.Domain.Models;
 
 namespace BookManager.Service.Domain {
@@ -29,6 +31,5 @@ namespace BookManager.Service.Domain {
         public void Remove (int id) {
             _repository.Delete (id);
         }
-
-    }
+  }
 }
