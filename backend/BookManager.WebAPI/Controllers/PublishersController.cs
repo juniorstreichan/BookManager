@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using BookManager.Domain.Interfaces.Service;
+using BookManager.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookManager.WebAPI.Controllers {
@@ -10,6 +12,12 @@ namespace BookManager.WebAPI.Controllers {
 
         public PublishersController (IPublishingCompanyService service) {
             _service = service;
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<PublishingCompany>> GetAll(){
+            var list = _service.GetAll();
+            return Ok(list);
         }
     }
 }

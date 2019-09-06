@@ -11,8 +11,14 @@ namespace BookManager.Service.Domain {
             _repository = repository;
         }
 
-        public Book Add (Book t) {
-            return _repository.Insert (t);
+        public virtual Book Add (Book t) {
+            _repository.Insert (t);
+            foreach (var item in t.BookGenres)
+            {
+                item.BookId = t.Id;
+            }
+            _repository.Update(t);
+            return t;
         }
 
         public Book Change (Book t) {

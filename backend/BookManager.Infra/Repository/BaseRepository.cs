@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookManager.Infra.Repository {
     public abstract class BaseRepository<T> : CRUDRepository<T> where T : class {
-        private readonly BookManagerContext _context;
+        protected readonly BookManagerContext _context;
         protected readonly DbSet<T> _db;
 
         public BaseRepository (BookManagerContext context) {
@@ -35,7 +35,7 @@ namespace BookManager.Infra.Repository {
 
         public T Insert (T entity) {
             _db.Add (entity);
-            _context.SaveChanges ();
+            // _context.SaveChanges ();
 
             return entity;
         }

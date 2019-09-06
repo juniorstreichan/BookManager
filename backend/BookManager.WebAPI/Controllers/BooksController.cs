@@ -44,3 +44,18 @@ namespace BookManager.WebAPI.Controllers {
         }
     }
 }
+
+/*
+
+{
+  "title": "Payment Adjustment Coordinator",
+  "publishDate": "2013-12-03",
+  "pages": 398,
+  "description": "Business-focused homogeneous throughput",
+  "synopsis": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.",
+  "imageUrl": "http://dummyimage.com/500x500.png/dddddd/000000",
+  "authorId": 3,
+  "publishingCompanyId": 1
+}
+
+ */
