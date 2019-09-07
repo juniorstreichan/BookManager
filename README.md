@@ -5,10 +5,12 @@
 ## Trata se de um sistema de cadastro de livros com as funcionalidades de:
 
 <br />
-- Cadastrar novo livro
-- Editar livro
-- Excluir livro
-- Busca por Autor e Título
+
+
+  - Cadastrar novo livro
+  - Editar livro
+  - Excluir livro
+  - Busca por Autor e Título
 
 ### Veja mais detalhes dos projetos:
 
