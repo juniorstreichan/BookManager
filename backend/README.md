@@ -56,7 +56,7 @@ Endponts:
 
 ```
 GET POST - /api/books
-GET POST - /api/books/q
+GET - /api/books/q
 PUT DELETE - /api/books/{id}
 
 GET - /api/authors
