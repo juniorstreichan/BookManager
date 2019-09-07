@@ -1,27 +1,9 @@
 import React, { Fragment } from 'react';
 import { Icon, Segment } from 'semantic-ui-react';
-import styled from 'styled-components';
 import GlobasStyles from '../../theme/GlobalStyles';
 import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
-
-const Content = styled.main`
-  padding-bottom: 100px;
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-`;
-
-const Header = styled.header`
-  padding: 10px 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-  border-bottom: #ffc5a1 dashed 1px;
-`;
+import { Header, Content } from './styles';
 
 const Layout: React.FC = ({ children }) => {
   return (

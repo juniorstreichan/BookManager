@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobasStyles = createGlobalStyle`
   body{
-    background-color:#badfdb !important;
+    background-color:#ffc5a1 !important;
   }
 `;
 
