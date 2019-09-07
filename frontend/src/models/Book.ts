@@ -1,3 +1,7 @@
+import Genre from './Genre';
+import PublishingCompany from './PublishingCompany';
+import Author from './Author';
+
 export default interface Book {
   id: number;
   title: string;
@@ -6,11 +10,11 @@ export default interface Book {
   description: string;
   synopsis: string;
   imageUrl: string;
-  buyLink?: any;
+  buyLink?: string;
   authorId: number;
-  author?: any;
+  author: Author | null;
   publishingCompanyId: number;
-  publishingCompany?: any;
+  publishingCompany: PublishingCompany | null;
   genreId: number;
-  genre?: any;
+  genre: Genre | null;
 }
