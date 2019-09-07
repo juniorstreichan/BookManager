@@ -23,8 +23,10 @@ const GlobasStyles = createGlobalStyle`
     background: #ddd;
   }
   body{
-    background-color:#ffc5a1 !important;
-  }
+    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%)!important; 
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+   }
 `;
 
 export default GlobasStyles;

@@ -48,7 +48,7 @@ const Books: React.FC<RouteComponentProps> = ({ history }) => {
             <BookCard
               key={`BookCard-${book.id}`}
               book={book}
-              onClickEdit={() => history.push(`/books/${book.id}`)}
+              onClickEdit={() => history.push({ pathname: `/books/${book.id}`, state: { book } })}
               onCickDelete={() => history.push(`/books/${book.id}`)}
             />
           ))}

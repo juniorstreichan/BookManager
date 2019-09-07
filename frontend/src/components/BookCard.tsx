@@ -11,7 +11,12 @@ interface Props {
 const BookCard: React.FC<Props> = ({ book, onClickEdit, onCickDelete }) => {
   return (
     <Card>
-      <Image fluid src={book.imageUrl} />
+      <Image
+        style={{ cursor: 'pointer' }}
+        onClick={() => onClickEdit()}
+        fluid
+        src={book.imageUrl}
+      />
       {book.genre && <Label attached="top left">{book.genre.description}</Label>}
       <Card.Content extra textAlign="right">
         <Popup

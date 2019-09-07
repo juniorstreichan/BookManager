@@ -11,7 +11,7 @@ const Layout: React.FC = ({ children }) => {
       <GlobasStyles />
       <Header>
         <Link to="/">
-          <Segment stacked>
+          <Segment raised circular compact>
             <h1>
               <Icon name="book" size="big" color="grey" />
               Books

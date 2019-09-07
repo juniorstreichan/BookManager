@@ -14,7 +14,7 @@ export const NavbarBox = styled.nav`
   height: 90px;
   background: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -48,5 +48,5 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: baseline;
-  border-bottom: #fff dashed 1px;
+  /* border-bottom: #fff dashed 1px; */
 `;
