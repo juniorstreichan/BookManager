@@ -19,7 +19,7 @@
 
 [Veja como foi o andamento](https://trello.com/b/faNnLYqg/prova-ewave)
 
-[Veja os commits](./git.log)
+[Veja os commits](./git.md)
 
 ### Ferramentas utilizadas:
 
