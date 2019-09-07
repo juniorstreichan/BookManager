@@ -6,11 +6,10 @@
 
 <br />
 
-
-  - Cadastrar novo livro
-  - Editar livro
-  - Excluir livro
-  - Busca por Autor e Título
+- Cadastrar novo livro
+- Editar livro
+- Excluir livro
+- Busca por Autor e Título
 
 ### Veja mais detalhes dos projetos:
 
@@ -18,9 +17,15 @@
 <br />
 [Frontend - ReactJS e Typescript](./frontend)
 
+[Veja como foi o andamento](https://trello.com/b/faNnLYqg/prova-ewave)
+
+[Veja os commits](./git.log)
+
 ### Ferramentas utilizadas:
 
 - VS Code
 - Insomnia
 - DBeaver
 - net cli
+
+### Se der algum problema para rodar o projeto, por favor, entre em contato !
