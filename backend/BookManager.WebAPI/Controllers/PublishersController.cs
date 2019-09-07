@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using BookManager.Domain.Interfaces.Service;
 using BookManager.Domain.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookManager.WebAPI.Controllers {
@@ -15,9 +16,10 @@ namespace BookManager.WebAPI.Controllers {
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<PublishingCompany>> GetAll(){
-            var list = _service.GetAll();
-            return Ok(list);
+        [DisableCors]
+        public ActionResult<IEnumerable<PublishingCompany>> GetAll () {
+            var list = _service.GetAll ();
+            return Ok (list);
         }
     }
 }

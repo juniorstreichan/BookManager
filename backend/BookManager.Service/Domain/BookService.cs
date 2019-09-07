@@ -26,11 +26,21 @@ namespace BookManager.Service.Domain {
             return list;
         }
 
-        public IEnumerable<Book> Search (string title = "", int authorId = 0) {
+        public IEnumerable<Book> Search (string title = "", int authorId = 0, int genreId = 0) {
             var list = Enumerable.Empty<Book> ();
 
+            if (genreId > 0 && authorId > 0 && title != "" && title != null) {
+                list = _repository.Find (book => book.GenreId == genreId && book.AuthorId == authorId && book.Title.ToUpper ().Contains (title.ToUpper ()));
+                return list;
+            }
+
+            if (genreId > 0 && title != "" && title != null) {
+                list = _repository.Find (book => book.GenreId == genreId && book.Title.ToUpper ().Contains (title.ToUpper ()));
+                return list;
+            }
+
             if (authorId > 0 && title != "" && title != null) {
-                list = _repository.Find (book => book.AuthorId == authorId && book.Title.Contains (title));
+                list = _repository.Find (book => book.AuthorId == authorId && book.Title.ToUpper ().Contains (title.ToUpper ()));
                 return list;
             }
 
@@ -40,7 +50,7 @@ namespace BookManager.Service.Domain {
             }
 
             if (title != "") {
-                list = _repository.Find (book => book.Title.Contains (title));
+                list = _repository.Find (book => book.Title.ToUpper ().Contains (title.ToUpper ()));
             }
 
             return list;

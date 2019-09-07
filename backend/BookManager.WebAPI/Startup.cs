@@ -26,7 +26,11 @@ namespace BookManager.WebAPI {
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices (IServiceCollection services) {
-            services.AddCors ();
+            services.AddCors (options => {
+                options.AddPolicy ("EnableCORS", builder => {
+                    builder.AllowAnyOrigin ().AllowAnyHeader ().AllowAnyMethod ().AllowCredentials ().Build ();
+                });
+            });
             services.AddDbContext<BookManagerContext> (
                 options => options.UseNpgsql (
                     Configuration.GetConnectionString ("Books"),
@@ -43,7 +47,7 @@ namespace BookManager.WebAPI {
             if (env.IsDevelopment ()) {
                 app.UseDeveloperExceptionPage ();
             }
-            app.UseCors (option => option.AllowAnyOrigin ());
+            app.UseCors ("EnableCORS");
             app.UseMvc ();
         }
 
