@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import 'semantic-ui-css/semantic.min.css';
+import { BrowserRouter } from 'react-router-dom';
+const Root = () => (
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
+ReactDOM.render(<Root />, document.getElementById('root'));

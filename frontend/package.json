@@ -10,7 +10,11 @@
     "@types/react-dom": "16.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.0",
+    "styled-components": "^4.3.2",
     "typescript": "3.6.2"
   },
   "scripts": {
@@ -36,6 +40,7 @@
   },
   "devDependencies": {
     "@atolye15/eslint-config": "^1.0.17",
+    "@types/styled-components": "^4.1.18",
     "eslint": "^6.3.0",
     "prettier": "^1.18.2"
   }
