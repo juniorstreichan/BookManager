@@ -22,7 +22,7 @@ namespace BookManager.Service.Domain {
         }
 
         public IEnumerable<Book> GetAll () {
-            var list = _repository.FindAll ();
+            var list = _repository.FindAll ().OrderByDescending (b => b.Id);
             return list;
         }
 
