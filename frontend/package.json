@@ -8,6 +8,8 @@
     "@types/node": "12.7.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
+    "axios": "^0.19.0",
+    "formik": "^1.5.8",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
@@ -15,7 +17,8 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.0",
     "styled-components": "^4.3.2",
-    "typescript": "3.6.2"
+    "typescript": "3.6.2",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,8 +43,10 @@
   },
   "devDependencies": {
     "@atolye15/eslint-config": "^1.0.17",
+    "@types/axios": "^0.14.0",
     "@types/react-router-dom": "^4.3.5",
     "@types/styled-components": "^4.1.18",
+    "@types/yup": "^0.26.23",
     "eslint": "^6.3.0",
     "prettier": "^1.18.2"
   }

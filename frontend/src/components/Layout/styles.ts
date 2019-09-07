@@ -7,7 +7,8 @@ export const NavbarBox = styled.nav`
     left: 30%;
   }
 
-  width: 100%;
+  width: 90%;
+  left: 5%;
   position: fixed;
   margin: 0 auto;
   bottom: 0%;
@@ -33,13 +34,14 @@ export const StyledButton = styled(Button)`
 `;
 
 export const Content = styled.main`
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
   padding-top: 10px;
   padding-bottom: 100px;
   width: 80%;
   height: 100%;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
 `;
 
 export const Header = styled.header`

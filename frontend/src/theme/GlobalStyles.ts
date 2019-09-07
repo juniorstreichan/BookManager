@@ -23,7 +23,7 @@ const GlobasStyles = createGlobalStyle`
     background: #ddd;
   }
   body{
-    background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%)!important; 
+    background-image: linear-gradient(to top, #00c6fb 0%, #0D71BB 100%)!important; 
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
    }

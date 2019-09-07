@@ -12,10 +12,10 @@ const Layout: React.FC = ({ children }) => {
       <Header>
         <Link to="/">
           <Segment raised circular compact>
-            <h1>
-              <Icon name="book" size="big" color="grey" />
+            <h2>
+              <Icon color="blue" name="book" size="small" />
               Books
-            </h1>
+            </h2>
           </Segment>
         </Link>
       </Header>

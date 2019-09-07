@@ -25,7 +25,7 @@ const BookCard: React.FC<Props> = ({ book, onClickEdit, onCickDelete }) => {
         />
         <Popup
           content={`Excluir ${book.title}`}
-          trigger={<Button icon="trash" color="red" circular />}
+          trigger={<Button onClick={() => onCickDelete()} icon="trash" color="red" circular />}
         />
       </Card.Content>
       <Card.Content>

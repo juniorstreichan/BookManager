@@ -1,7 +1,8 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { NavbarBox, StyledButton } from './styles';
-import { Popup } from 'semantic-ui-react';
+import { Popup, Input, Header, Button } from 'semantic-ui-react';
+import DropdownAuthors from '../Dropdowns/DropdownAuthors';
 
 function scrollToTop() {
   const c = document.documentElement.scrollTop || document.body.scrollTop;
@@ -14,6 +15,22 @@ function scrollToTop() {
 const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
   const { location } = history;
   const [showButton, setShowButton] = useState(false);
+  const [author, setAuthor] = useState(0);
+  const [title, setTitle] = useState('');
+
+  const handleSearch = () => {
+    let query = '?';
+    if (title !== '') {
+      query += `title=${title}`;
+    }
+
+    if (author > 0) {
+      query += `&author=${author}`;
+    }
+    setAuthor(0);
+    setTitle('');
+    history.push(`/${query}`);
+  };
 
   useEffect(() => {
     function scrollTopEvent() {
@@ -39,6 +56,7 @@ const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
               <StyledButton
                 icon="plus"
                 size="massive"
+                color="blue"
                 circular
                 onClick={() => history.push('/books/new')}
               />
@@ -54,7 +72,13 @@ const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
           content="Lista de Livros"
           trigger={
             <div>
-              <StyledButton icon="list" size="massive" circular onClick={() => history.push('/')} />
+              <StyledButton
+                color="blue"
+                icon="list"
+                size="massive"
+                circular
+                onClick={() => history.push('/')}
+              />
             </div>
           }
         />
@@ -64,9 +88,38 @@ const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <NavbarBox>
-      <StyledButton icon="search" circular />
+      <Popup
+        on="click"
+        position="top center"
+        trigger={
+          <div>
+            <StyledButton color="blue" icon="search" circular />
+          </div>
+        }
+      >
+        <Header>Buscar</Header>
+        <Input
+          name="q"
+          value={title}
+          onChange={(e, { value }) => setTitle(value)}
+          placeholder="Título do livro"
+        />
+        <DropdownAuthors value={author} onChange={id => setAuthor(id)} />
+        <Button
+          onClick={() => handleSearch()}
+          disabled={author === 0 && title === ''}
+          fluid
+          icon="search"
+        />
+      </Popup>
       {CenterButton}
-      <StyledButton disabled={!showButton} onClick={scrollToTop} icon="angle up" circular />
+      <StyledButton
+        color="blue"
+        disabled={!showButton}
+        onClick={scrollToTop}
+        icon="angle up"
+        circular
+      />
     </NavbarBox>
   );
 };
