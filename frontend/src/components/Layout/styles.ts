@@ -33,6 +33,7 @@ export const StyledButton = styled(Button)`
 `;
 
 export const Content = styled.main`
+  padding-top: 10px;
   padding-bottom: 100px;
   width: 80%;
   height: 100%;
@@ -47,5 +48,5 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: baseline;
-  border-bottom: #ffc5a1 dashed 1px;
+  border-bottom: #fff dashed 1px;
 `;

@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { NavbarBox, StyledButton } from './styles';
 
 const Navbar: React.FC<RouteComponentProps> = ({ history }) => {
-  console.log(history);
+  // console.log(history);
 
   return (
     <NavbarBox>
