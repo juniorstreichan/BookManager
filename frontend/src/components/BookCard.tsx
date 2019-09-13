@@ -41,7 +41,7 @@ const BookCard: React.FC<Props> = ({ book, onClickEdit, onCickDelete }) => {
         )}
 
         <Card.Meta textAlign="right">
-          Publicade em: {new Date(book.publishDate).toLocaleDateString()}
+          Publicado em: {new Date(book.publishDate).toLocaleDateString()}
         </Card.Meta>
         <Card.Description>{book.description}</Card.Description>
       </Card.Content>
