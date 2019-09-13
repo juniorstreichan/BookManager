@@ -1,4 +1,4 @@
-# Avaliação para Desenvolvedor Pleno 2 [Ewave - TJMT]
+# BookManager, um gerenciador de livros
 
 ![showcase](./docs/showcase.png)
 
